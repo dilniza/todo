@@ -23,7 +23,7 @@ func main() {
 	}
 
 	// Initialize storage (MongoDB connection)
-	store, err := storage.NewStorage(cfg.DBUri) // Make sure NewStorage initializes your MongoDB client properly
+	store, err := storage.NewStorage(cfg.DBUri)
 	if err != nil {
 		log.Fatalf("could not connect to database: %v", err)
 	}
@@ -42,7 +42,6 @@ func main() {
 		LabelService:    labelService,
 	}
 
-	// Set up the router and server, passing services as a pointer
 	r := api.New(services, log.Default())
 
 	// Create a new server
